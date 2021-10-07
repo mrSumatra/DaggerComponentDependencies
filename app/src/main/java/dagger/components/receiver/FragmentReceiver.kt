@@ -1,6 +1,7 @@
 package dagger.components.receiver
 
 import android.app.Activity
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,7 @@ class FragmentReceiver : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        viewModel = .of(this, viewModelFactory).get(ViewModelReceiver::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ViewModelProvider::class.java)
         frame = view.findViewById(R.id.frame)
         viewModel.event.observe(viewLifecycleOwner) {
             viewModel.observeColors()
